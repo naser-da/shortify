@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Link;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -12,7 +13,9 @@ class LinkController extends Controller
      */
     public function index()
     {
-        //
+        $links = Link::where('user_id', Auth::user()->id)->get();
+        
+        return view('link.index', ['links' => $links]);
     }
 
     /**

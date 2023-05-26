@@ -32,27 +32,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>https://google.com</td>
-                <td>2</td>
-                <td>ja2e</td>
-                <td>8th, June 2023</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>https://google.com</td>
-                <td>2</td>
-                <td>ja2e</td>
-                <td>8th, June 2023</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>https://google.com</td>
-                <td>2</td>
-                <td>ja2e</td>
-                <td>8th, June 2023</td>
-              </tr>
+              @foreach ($links as $link)
+                  <tr>
+                  <th scope="row">{{$link->id}}</th>
+                  <td>{{$link->origional_link}}</td>
+                  <td>{{$link->visits_count}}</td>
+                  <td>{{$link->shortened_link}}</td>
+                  <td>{{$link->created_at->format('F j, Y g:i A')}}</td>
+                </tr>
+              @endforeach
             </tbody>
         </table>
     </div>
