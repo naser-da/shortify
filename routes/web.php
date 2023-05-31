@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkController;
 
@@ -15,9 +16,9 @@ use App\Http\Controllers\LinkController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('admin.index');
+})->name('admin.name');
 
-Auth::routes();
+Auth::routes(); 
 
 Route::get('/home', [LinkController::class, 'index'])->name('link.index');
