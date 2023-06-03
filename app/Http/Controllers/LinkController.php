@@ -13,8 +13,8 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id', Auth::user()->id)->get();
-        
+        // $links = Link::where('user_id', Auth::user()->id)->get();
+        $links = Link::paginate();
         return view('link.index', ['links' => $links]);
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,10 @@ use App\Http\Controllers\LinkController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
-})->name('admin.name');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/links', [LinkController::class, 'index'])->name('links.index');
+});
 
 Auth::routes(); 
 
-Route::get('/home', [LinkController::class, 'index'])->name('link.index');
+Route::get('/', function () { return view('welcome'); })->name('homepage');
